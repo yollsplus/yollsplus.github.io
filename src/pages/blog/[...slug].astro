@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+	<article class="prose prose-slate max-w-none font-mono">
+		<header class="mb-8 border-b-2 border-retro-border pb-4">
+			<div class="flex justify-between items-center text-xs text-retro-border opacity-60 mb-2">
+				<span>CATEGORY: {post.data.category.toUpperCase()}</span>
+				<time datetime={post.data.pubDate.toISOString()}>
+					date: {post.data.pubDate.toLocaleDateString()}
+				</time>
+			</div>
+			<h1 class="text-3xl font-bold font-pixel mb-2">{post.data.title}</h1>
+			{post.data.description && <p class="text-lg italic opacity-80">{post.data.description}</p>}
+		</header>
+		
+		<div class="bg-white">
+			<Content />
+		</div>
+
+		<footer class="mt-8 pt-4 border-t border-dashed border-retro-border">
+			<a href="/" class="inline-block bg-retro-text text-retro-bg px-4 py-2 hover:bg-retro-accent-1 hover:text-white transition-colors">
+				&lt; RETURN TO MAIN
+			</a>
+		</footer>
+	</article>
+</Layout>

@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const categories = [...new Set(posts.map((post) => post.data.category))];
+
+// Group posts by category
+const postsByCategory = categories.reduce((acc, category) => {
+  acc[category] = posts.filter((post) => post.data.category === category);
+  // Sort by date desc
+  acc[category].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return acc;
+}, {} as Record<string, typeof posts>);
+---
+
+<aside class="w-full md:w-64 bg-retro-bg border-r-4 border-retro-border p-6 flex flex-col h-full overflow-y-auto">
+  <div class="mb-8">
+    <h1 class="text-2xl font-bold mb-2">YOLLS<br/>BLOG</h1>
+    <div class="h-1 w-full bg-retro-accent-1 mb-1"></div>
+    <div class="h-1 w-2/3 bg-retro-accent-2"></div>
+  </div>
+
+  <nav class="space-y-8 flex-1">
+    {Object.entries(postsByCategory).map(([category, categoryPosts]) => (
+      <div>
+        <h2 class="font-bold mb-3 uppercase tracking-wider text-sm text-retro-border opacity-70 border-b-2 border-retro-border pb-1">
+          {category}
+        </h2>
+        <ul class="space-y-2">
+          {categoryPosts.map((post) => (
+            <li>
+              <a 
+                href={`/blog/${post.slug}/`}
+                class="block text-sm hover:text-retro-accent-1 hover:translate-x-1 transition-transform cursor-pointer"
+              >
+                > {post.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </nav>
+
+  <div class="mt-8 text-xs font-mono opacity-50">
+    <p>EST. 2026</p>
+    <p>SYSTEM OK</p>
+  </div>
+</aside>
