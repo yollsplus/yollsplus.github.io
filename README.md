@@ -2,19 +2,78 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Geometric Personal Page
 
-This contains everything you need to run your app locally.
+A static personal homepage with a blueprint/geometric design style, featuring an advanced opening animation and markdown content display.
 
-View your app in AI Studio: https://ai.studio/apps/fd327517-9e2e-4127-8ee5-2b42868581ab
+**Live Demo:** https://yollsplus.github.io
 
-## Run Locally
+## 🚀 GitHub Pages 部署
 
-**Prerequisites:**  Node.js
+本项目已配置 GitHub Actions 自动部署。详细说明请查看 [DEPLOYMENT.md](DEPLOYMENT.md)
 
+**快速部署：**
+```bash
+git add .
+git commit -m "Update site"
+git push origin main
+```
+
+推送后会自动构建并部署到 GitHub Pages。
+
+## 🛠️ Run Locally
+
+**Prerequisites:** Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## 📁 Project Structure
+
+```
+├── src/
+│   ├── components/       # React components
+│   │   ├── SplashScreen.tsx
+│   │   ├── ProfileCard.tsx
+│   │   ├── MarkdownViewer.tsx
+│   │   └── ParticleBackground.tsx
+│   ├── content/         # Markdown content files
+│   │   └── about.md
+│   └── App.tsx
+├── .github/workflows/   # GitHub Actions deployment
+└── index.html
+```
+
+## 🎨 Features
+
+- ✨ Geometric/Blueprint design style
+- 🎬 Advanced loading animation
+- 📝 Markdown content support
+- 🎯 Particle background effects
+- 📱 Responsive design
+- ⚡ Built with Vite + React
+
+## 🔧 Tech Stack
+
+- React 19
+- TypeScript
+- Vite 6
+- Tailwind CSS 4
+- Motion (Animation)
+- React Markdown
+
+---
+
+View in AI Studio: https://ai.studio/apps/fd327517-9e2e-4127-8ee5-2b42868581ab
