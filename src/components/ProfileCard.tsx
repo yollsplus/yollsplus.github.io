@@ -64,7 +64,7 @@ export default function ProfileCard() {
         <div className="text-center mb-10 relative">
           <div className="inline-block relative">
             <h1 className="font-display text-5xl md:text-6xl font-bold tracking-tight text-slate-800 mb-2 relative z-10">
-              ALEX_DEV
+              Kezhuo_Yang
             </h1>
             <div className="absolute -bottom-2 left-0 w-full h-3 bg-blue-200/50 -skew-x-12 z-0" />
           </div>
@@ -78,7 +78,7 @@ export default function ProfileCard() {
 
         {/* Social Links - Glassmorphism */}
         <div className="flex justify-center gap-4">
-          <SocialLink href="https://github.com" icon={<Github size={22} />} label="GITHUB" />
+          <SocialLink href="https://github.com/yollsplus" icon={<Github size={22} />} label="GITHUB" />
           <SocialLink href="https://twitter.com" icon={<Twitter size={22} />} label="TWITTER" />
           <SocialLink href="mailto:example@example.com" icon={<Mail size={22} />} label="EMAIL" />
           <SocialLink href="https://linkedin.com" icon={<Linkedin size={22} />} label="LINKEDIN" />
