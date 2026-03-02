@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Oswald:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Oswald", sans-serif;
+  
+  --color-blueprint-bg: #f0f2f5;
+  --color-blueprint-grid: #d1d5db;
+  --color-blueprint-primary: #1f2937;
+  --color-blueprint-accent: #2563eb;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-blueprint-bg);
+    color: var(--color-blueprint-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* Advanced Blueprint Grid Background */
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(209, 213, 219, 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(209, 213, 219, 0.4) 1px, transparent 1px);
+    position: relative;
+  }
+
+  .bg-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: 200px 200px;
+    background-image:
+      linear-gradient(to right, rgba(209, 213, 219, 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(209, 213, 219, 0.6) 1px, transparent 1px);
+    pointer-events: none;
+  }
+  
+  /* Vignette effect */
+  .bg-grid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(240, 242, 245, 0.8) 100%);
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(0,0,0,0.1);
+    color: transparent;
+  }
+  
+  .clip-corner-tr {
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  }
+  
+  .clip-corner-bl {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  }
+
+  .clip-tech-card {
+    clip-path: polygon(
+      0 0, 
+      calc(100% - 30px) 0, 
+      100% 30px, 
+      100% 100%, 
+      30px 100%, 
+      0 calc(100% - 30px)
+    );
+  }
+}
